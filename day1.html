@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+        
+        , initial-scale=1.0">
+    <title>Day-1</title>
+    <style>
+        .container {
+            display: flex;
+            /* width: 600px; */
+            background-color:solid(166, 168, 168);
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .ageform {
+            /* display: flex; */
+            /* width: 600px; */
+             background-color: rgb(151, 152, 152); 
+            /* margin: auto; */
+            /* margin-top: 20px; */
+            gap: 20px;
+        }
+
+        .ageAlign {
+            /* display: flex; */
+        }
+
+        p {
+            display: inline-block;
+        }
+
+        .livesize {
+            width: 200px;
+            border-radius: 10px;
+           background-origin: padding-box;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="ageform">
+            <h2>
+                Update
+            </h2>
+
+            <label for="name">Name:</label>
+            <div><input type="text" id="name" value="Mg Mg"></input></div>
+
+            <label for="age" id="age">Age</label>
+           <div> <input type="number" id="age" value="32"></input></div>
+
+            <h2>VIP Status</h2>
+            <input type="checkbox" checkbox> </input>
+
+            <div><lable for="color">Color:</lable>
+            <input type="color"></input></div>
+        </div>
+
+        <div class="livesize">
+            <h2>Live DOM</h2>
+            <div class="card">
+
+                <h3 id="nameOutput">Sample Name</h3>
+                <div class="ageAlign">
+
+                    <div>
+                        Age:<p id="ageOutput">40</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
