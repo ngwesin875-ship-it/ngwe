@@ -3,51 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Calculator Re</title>
+
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        .container{
+          width: 100%;
+          height: 100vh;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .calculator{
+          background:rgb(157, 155, 226);
+          padding: 10px;
+          border-radius: 10px;
+        }
+        .calculator form input{
+          border: 0;
+          outline: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50px;
+          background: white;
+          font-size: 20px;
+          color:#0d0d0d;
+          cursor:pointer;
+          margin:5px;
+        }
+    
+        form .display{
+          display: flex;
+          justify-content: flex-end;
+          margin: 20px 0;
+        }
+        form .display input{
+          text-align: right;
+          flex:1;
+          font-size: 25px;
+          padding: 5px;
+          border: none;
+          height: 70px;
+        }
+        form input.equal{
+          width: 95%;
+          height: 50px;
+        }
+            
+
+    </style>
 
 </head>
 <body>
-    
-<style>
-.container {
-  position: relative;
-}
+  <div class="container">
+    <div class="calculator">
+      <form>
 
-.black-box {
-  position: relative;
-  border: 2px solid black;
-  height: 100px;
-  margin: 30px;
-}
+        <div class="display">
+          <input type="text" id="display" readonly>
+        </div>
 
-.gray-box {
-  position: absolute;
-  background: lightgray;
-  height: 60px;
-  width: 70%;
-  left: 50px;
-  top: 50px;
-}
+        <div>
+          <input type="button" value="AC" onclick="clearDisplay()" class="operator">
 
-.green-box {
-  position: absolute;
-  background: lightgreen;
-  width: 35%;
-  left: 270px;
-  top: -15px;
-  height: 100px;
-}
-</style>
-</head>
-<body>
+          <input type="button" value="DE" onclick="del()" class="operator">
 
-<div class="container">
-  <div class="black-box">Black box</div>
-  <div class="gray-box">Gray box</div>
-  <div class="green-box">Green box</div>
-</div>
+          <input type="button" value="%" onclick="percent()">
 
+          <input type="button" value="/" onclick="add('/')">
+        </div>
 
-    
+        <div>
+          <input type="button" value="7" onclick="add('7')">
+
+          <input type="button" value="8" onclick="add('8')">
+
+          <input type="button" value="9" onclick="add('9')">
+
+          <input type="button" value="*" onclick="add('*')">
+        </div>
+
+        <div>
+          <input type="button" value="4" onclick="add('4')">
+
+          <input type="button" value="5" onclick="add('5')">
+
+          <input type="button" value="6" onclick="add('6')">
+
+          <input type="button" value="-" onclick="add('-')">
+        </div>
+
+        <div>
+          <input type="button" value="1" onclick="add('1')">
+
+          <input type="button" value="2" onclick="add('2')">
+
+          <input type="button" value="3" onclick="add('3')">
+
+          <input type="button" value="+" onclick="add('+')">
+        </div>
+
+        <div>
+          <input type="button" value="(" onclick="add('(')">
+
+          <input type="button" value=")" onclick="add(')')">
+
+          <input type="button" value="." onclick="dot()">
+
+          <input type="button" value="0" onclick="add('0')">
+        </div>
+
+        <div>
+          <input type="button" value="=" onclick="answer()" class="equal">
+        </div>
+
+        </form>
+      </div>
+    </div>
+
+  <script>
+
+    let display = document.getElementById("display");
+
+    function add(value){
+      display.value += value;
+    }
+
+    function clearDisplay(){
+      display.value = "";
+    }
+
+    function del(){
+      display.value =display.value.slice(0,-1);
+    }
+
+    function dot(){
+      if(!display.value.includes('.')){
+        display.value += '.';
+      }
+    }
+
+    function percent(){
+      if(display.value != ""){
+        display.value =eval(display.value)/100;
+      }
+    }
+
+    function answer(){
+      if(display.value == ""){
+        display.value = "";
+      }
+
+      else if(eval(display.value) == Infinity){
+        display.value = "Error";
+      }
+
+      else{
+        display.value = eval(display.value);
+      }
+
+    }
+    function dot(){
+      let lastNumber =display.value.split(/[\+\-\*\/]/).pop();
+      if(!lastNumber.includes('.')){
+        display.value += '.';
+      }
+
+    }
+    function add(value) {
+
+      let lastChar = display.value.slice(-1);
+      let operators = ["+", "-", "*", "/"];
+
+      if (operators.includes(value) && operators.includes(lastChar)) {
+        display.value = display.value.slice(0, -1) + value;
+      } 
+      else {
+        display.value += value;
+      }
+    }
+
+  </script>
+
 </body>
 </html>
